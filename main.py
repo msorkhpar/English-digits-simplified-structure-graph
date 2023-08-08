@@ -35,7 +35,13 @@ os.makedirs('output/pics', exist_ok=True)
 os.makedirs('output/graphs', exist_ok=True)
 
 size = 1024
-for i in range(10):
+target_files = []
+for root, directories, files in os.walk("./digits"):
+    for f in files:
+        if f.endswith(".adjlist"):
+            target_files.append(f.split(".")[0])
+
+for i in target_files:
     # Read node data from file
     node_data_file = f'./digits/{i}.data'
     nodes_data = read_node_data(node_data_file, size)

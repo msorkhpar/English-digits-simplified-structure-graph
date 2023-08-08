@@ -25,4 +25,5 @@ def convert_graph_to_cv2_image(graph, width, height, output_path, color=(0, 0, 0
             y += (i + 1) * 12 * direction
             cv2.putText(output, line, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2, cv2.LINE_AA, False)
 
+    output = cv2.copyMakeBorder(output.copy(), 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=[255, 255, 255])
     cv2.imwrite(output_path, output)
